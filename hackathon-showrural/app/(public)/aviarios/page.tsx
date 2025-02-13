@@ -2,13 +2,16 @@ import { Aviario, columns } from "./columns";
 import { DataTable } from "./data-table";
 
 async function getData(): Promise<Aviario[]> {
-  // Fetch data from your API here.
   return [
     {
-      id: "728ed52f",
-      amount: 100,
-      status: "pending",
-      email: "m@example.com",
+      id: "1",
+      nomeResponsavel: "João",
+      endereco: "Rua 1"
+    },
+    {
+      id: "2",
+      nomeResponsavel: "Giovani",
+      endereco: "Rua 3"
     },
     // ...
   ];

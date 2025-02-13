@@ -4,22 +4,21 @@ import { ColumnDef } from "@tanstack/react-table"
 
 export type Aviario = {
   id: string
-  amount: number
-  status: "pending" | "processing" | "success" | "failed"
-  email: string
+  nomeResponsavel: string
+  endereco: string
 }
 
 export const columns: ColumnDef<Aviario>[] = [
   {
-    accessorKey: "status",
-    header: "Status",
+    accessorKey: "id",
+    header: "Nº Aviário",
   },
   {
-    accessorKey: "email",
-    header: "Email",
+    accessorKey: "nomeResponsavel",
+    header: "Nome Responsável",
   },
   {
-    accessorKey: "amount",
-    header: "Amount",
+    accessorKey: "endereco",
+    header: "Endereço",
   },
 ]
