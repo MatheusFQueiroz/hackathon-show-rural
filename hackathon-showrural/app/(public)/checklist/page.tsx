@@ -1,5 +1,4 @@
 "use client";
-import { Check, X } from "lucide-react";
 import crudSanity from "../../sanityClient";
 import {
   Table,
@@ -9,6 +8,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { Checkbox } from "@/components/ui/checkbox";
 
 export default function Checklist() {
   async function chamar() {
@@ -21,7 +21,7 @@ export default function Checklist() {
     console.log(retorno);
   }
 
-  const perguntas = ["1", "2", "2"]
+  const perguntas = ["1", "2", "2"];
 
   const checklist = {
     perguntas: [
@@ -35,36 +35,33 @@ export default function Checklist() {
       },
       {
         pergunta: "Pergunta 3",
-        conforme: false,
+        conforme: true,
       },
     ],
-    
-  }
+  };
 
   return (
     <div className="w-full flex justify-center pt-2">
       <div className="pt-2 w-3/4 flex-col items-center flex gap-12 justify-center ">
-        <button onClick={chamar} className="text-3xl">
-          CheckList
-        </button>
+        <h1 className="text-2xl">CheckList</h1>
         <Table>
           <TableHeader>
-            <TableRow className="grid grid-cols-12">
-              <TableHead className="col-span-8">Pergunta</TableHead>
-              <TableHead className="col-span-2 text-end">Conforme</TableHead>
-              <TableHead className="col-span-2 text-end">Não conforme</TableHead>
+            <TableRow className="bg-gray-100">
+              <TableHead>Pergunta</TableHead>
+              <TableHead className="text-end">
+                Conforme
+              </TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
             {checklist.perguntas.map((pergunta) => (
-              <TableRow key={pergunta.pergunta}>
-                <TableCell colSpan={7}>{pergunta.pergunta}</TableCell>
-                <TableCell colSpan={1} className="text-end">
-                  {pergunta.conforme ? <Check className="float-right" /> : null}
-                </TableCell>
-                <TableCell colSpan={1} className="text-end ">
-                  {pergunta.conforme ? null : 
-                  <X className="float-right" />}
+              <TableRow key={pergunta.pergunta} className="">
+                <TableCell>{pergunta.pergunta}</TableCell>
+                <TableCell className="text-end">
+                  <Checkbox
+                    checked={pergunta.conforme}
+                    onCheckedChange={(checked) => console.log(checked)}
+                  />
                 </TableCell>
               </TableRow>
             ))}
