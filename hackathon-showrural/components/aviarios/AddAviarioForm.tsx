@@ -124,7 +124,7 @@ export default function AddAviarioForm() {
             </form>
           </Form>
           <DialogFooter>
-            <Button type="submit">Save changes</Button>
+            <Button type="submit">Salvar</Button>
           </DialogFooter>
         </DialogContent>
       </Dialog>

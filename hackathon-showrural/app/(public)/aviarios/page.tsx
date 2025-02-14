@@ -40,7 +40,7 @@ export default function Aviarios() {
 
   return (
     <div>
-      <div className="w-full flex justify-center pt-16">
+      <div className="w-full flex justify-center pt-2">
         <div className="w-4/5">
           <Filter />
           <DataTable columns={columns} data={aviarios} />

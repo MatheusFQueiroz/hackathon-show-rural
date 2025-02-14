@@ -41,7 +41,7 @@ const data = {
     },
     {
       title: "Lotes",
-      url: "#",
+      url: "lotes",
       icon: Package,
       items: [
         {
