@@ -4,31 +4,38 @@ import Filter from "@/components/lotes/Filter";
 import ExpandableTable from "@/components/ocorrencias/ExpandableTable";
 import AddLoteForm from "@/components/lotes/AddLoteForm";
 import { Aviario } from "@/app/uteis/types";
-/*
-const aviarios: Aviario[] = [
-  {
-    id: "1",
-    nomeResponsavel: "João",
-    endereco: "Rua 1",
-    isAtivo: true,
-  },
-  {
-    id: "2",
-    nomeResponsavel: "Giovani",
-    endereco: "Rua 3",
-    isAtivo: false,
-  },
-];*/
+import { TableBody } from "@/components/ui/table";
+import {
+  Table,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
+import { Eye } from "lucide-react";
 
 export default function Ocorrencias() {
   return (
-    <div>
-      <div className="w-full flex justify-center pt-2">
-        <div className="my-6 w-4/5 flex flex-col justify-center text-center gap-16">
-            <h1 className="text-4xl">
-                Ocorrências
-            </h1>
-        </div>
+    <div className="w-full flex justify-center">
+      <div className="w-4/5">
+        <Table className="w-full border border-gray-300">
+          <TableHeader className="bg-gray-200 text-center">
+            <TableRow>
+              <TableHead className="text-center">Nº Lote</TableHead>
+              <TableHead className="text-center">Código Ocorrência</TableHead>
+              <TableHead className="text-center">Data Ocorrência</TableHead>
+              <TableHead className="text-center">Imagem</TableHead>
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            <TableRow>
+              <TableCell className="text-center"></TableCell>
+              <TableCell className="text-center"></TableCell>
+              <TableCell className="text-center"></TableCell>
+              <TableCell className="text-center"><Eye/></TableCell>
+            </TableRow>
+          </TableBody>
+        </Table>
       </div>
     </div>
   );

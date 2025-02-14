@@ -50,7 +50,7 @@ const data = {
         },
         {
           title: "Ocorrências",
-          url: "#",
+          url: "ocorrencias",
         },
       ],
     },

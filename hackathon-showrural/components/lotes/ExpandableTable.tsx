@@ -10,7 +10,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { Button } from "@/components/ui/button";
-import { ChevronDown, ChevronUp } from "lucide-react";
+import { ChevronDown, ChevronUp, Eye, eye } from "lucide-react";
 import crudSanity from "../../app/sanityClient";
 import { Lote, Ocorrencia } from "@/app/uteis/types";
 import { set } from "date-fns";
@@ -27,8 +27,9 @@ export default function ExpandableTable() {
 
     
         retorno.map(async (lote: Lote) => {
-          const retornoOcorrencia = await crudSanity.select("ocorrencia", [], "", `id_aviario == ${lote.id_aviario}`);
+          const retornoOcorrencia = await crudSanity.select("ocorrencia", [], "", `id_aviario == ${lote.id_aviario} && id_lote == ${lote.id_lote}`);
           setOcorrencias(retornoOcorrencia);
+          console.log(retornoOcorrencia);
 
         })
         console.log("Dados do Sanity:", retorno);
@@ -110,15 +111,7 @@ export default function ExpandableTable() {
                                   : "Sem data"}
                               </TableCell>
                               <TableCell className="text-center">
-                                {ocorrencia.image ? (
-                                  <img
-                                    src={ocorrencia.image}
-                                    alt="Ocorrência"
-                                    className="w-20 h-20 object-cover mx-auto"
-                                  />
-                                ) : (
-                                  "Sem imagem"
-                                )}
+                                <Eye></Eye>
                               </TableCell>
                             </TableRow>
                           ))}
