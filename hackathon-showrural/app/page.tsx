@@ -18,18 +18,18 @@ import {
 } from "@/components/ui/chart"
 
 const chartData = [
-  { name: "Aviários com lote ativo: ", value: 500, fill: "hsl(var(--chart-4))" },
-  { name: "Aviários sem lote ativo:", value: 200, fill: "hsl(var(--chart-2))" },
+  { name: "Aviários com lote ativo: ", value: 500, fill: "hsl(var(--primary))" },
+  { name: "Aviários sem lote ativo:", value: 200, fill: "" },
 ]
 
 const chartConfig = {
   activeFarms: {
     label: "Aviários com lote ativo: ",
-    color: "hsl(var(--chart-4))",
+    color: "hsl(var(--primary))",
   },
   inactiveFarms: {
     label: "Aviários sem lote ativo: ",
-    color: "hsl(var(--chart-2))",
+    color: "",
   },
 } satisfies ChartConfig
 
@@ -45,7 +45,7 @@ const chartData1 = [
 const chartConfig1 = {
   salmonella: {
     label: "% Lotes com Salmonela: ",
-    color: "hsl(var(--chart-3))",
+    color: "hsl(var(--primary))",
   },
 } satisfies ChartConfig
 
