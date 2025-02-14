@@ -159,7 +159,7 @@ export default function Filter() {
             <FormItem>
               <FormLabel>Quantidade de Aves</FormLabel>
               <FormControl>
-                <Input  {...field ?? ""} />
+                <Input  {...field ?? 0} />
               </FormControl>
             </FormItem>
           )}
