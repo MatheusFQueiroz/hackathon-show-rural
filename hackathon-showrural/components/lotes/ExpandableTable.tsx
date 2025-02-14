@@ -1,10 +1,5 @@
 "use client";
-<<<<<<< HEAD
 import React, { useState, useEffect } from "react";
-=======
-
-import React, { useEffect, useState } from "react";
->>>>>>> 15df5d02f3c655f9585da36cb97633d28247c541
 import {
   Table,
   TableBody,
@@ -15,90 +10,11 @@ import {
 } from "@/components/ui/table";
 import { Button } from "@/components/ui/button";
 import { ChevronDown, ChevronUp } from "lucide-react";
-<<<<<<< HEAD
-
-const data: Lote[] = [
-  {
-    id_lote: 1,
-    id_aviario: 4,
-    dt_alojamento: new Date(),
-    dt_saida_lote: undefined,
-    qt_aves: 1000,
-    linhagem: "Cobb",
-    peso_ave_entrada: 1.5,
-    peso_ave_saida: undefined,
-    qt_aves_mortas: 10,
-    isSalmonelaValid: false,
-    nrOcorrencias: [
-      {
-        id_ocorrencia: 5,
-        dt_ocorrencia: new Date(),
-        image: images.imgRequest
-      },
-    ],
-  },
-  {
-    id_lote: 3,
-    id_aviario: 5,
-    dt_alojamento: new Date(),
-    dt_saida_lote: undefined,
-    qt_aves: 1000,
-    linhagem: "Cobb",
-    peso_ave_entrada: 1.5,
-    peso_ave_saida: undefined,
-    qt_aves_mortas: 10,
-    isSalmonelaValid: false,
-    nrOcorrencias: [
-      {
-        id_ocorrencia: 1,
-        dt_ocorrencia: new Date(),
-        image: "base64:{$images.imgRequest}",
-      },
-    ],
-  },
-  {
-    id_lote: 5,
-    id_aviario: 6,
-    dt_alojamento: new Date(),
-    dt_saida_lote: undefined,
-    qt_aves: 1000,
-    linhagem: "Cobb",
-    peso_ave_entrada: 1.5,
-    peso_ave_saida: undefined,
-    qt_aves_mortas: 10,
-    isSalmonelaValid: false,
-    nrOcorrencias: [
-    ],
-  },
-];
-
-export default function ExpandableTable() {
-  const [images, setImages] = useState([]);
-
-  useEffect(() => {
-    const fetchImage = async () => {
-      try {
-        const response = await fetch("/api/images");
-        if (!response.ok) {
-          throw new Error("Deu erro");
-        }
-        const data = await response.json();
-        setImages(data);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-
-    fetchImage();
-}, []);
-
-=======
 import crudSanity from "../../app/sanityClient";
 import { Lote, Ocorrencia } from "@/app/uteis/types";
 import { set } from "date-fns";
 
 export default function ExpandableTable() {
->>>>>>> 15df5d02f3c655f9585da36cb97633d28247c541
   const [expandedRows, setExpandedRows] = useState<number[]>([]);
   const [lotes, setLotes] = useState<Lote[]>([]);
   const [ocorrencias, setOcorrencias] = useState<Ocorrencia[]>([]);

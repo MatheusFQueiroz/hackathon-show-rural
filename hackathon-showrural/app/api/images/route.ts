@@ -2,10 +2,12 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(request: NextRequest, response: NextResponse) {
     const url = new URL(request.url)
+    console.log(request.url)
+    console.log(url)
     const imageId = url.imageId;
     console.log(imageId);
     return new Response(JSON.stringify(imageId),{
         status:200,
-        headers:{ "Content-Type": "application/json" }
+        headers:{ "Content-Type": "application/json"}
     })
 }
