@@ -67,7 +67,7 @@ export default function Filter({ onFilter }: FilterProps) {
           render={({ field }) => (
             <FormItem className="flex-1">
               <FormLabel>Situação do Aviário</FormLabel>
-              <Select onValueChange={field.onChange} value={field.value}>
+              <Select onValueChange={field.onChange} value={field.value} defaultValue={undefined}>
                 <FormControl>
                   <SelectTrigger className="w-full">
                     <SelectValue placeholder="Selecione a situação" />
@@ -83,7 +83,7 @@ export default function Filter({ onFilter }: FilterProps) {
         />
 
         {/* Botão Filtrar */}
-        <Button type="submit" className="bg-orange-500 px-6 h-[42px] mt-6">
+        <Button type="submit" variant={'default'}>
           Filtrar
         </Button>
 
@@ -91,7 +91,7 @@ export default function Filter({ onFilter }: FilterProps) {
         <Button
           type="button"
           onClick={onReset}
-          className="bg-gray-400 px-6 h-[42px] mt-6"
+          variant={'outline'}
         >
           Limpar Filtros
         </Button>
