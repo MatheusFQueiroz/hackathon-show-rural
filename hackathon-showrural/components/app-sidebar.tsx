@@ -29,7 +29,7 @@ const data = {
   navMain: [
     {
       title: "Dashboard",
-      url: "",
+      url: "../",
       icon: ChartPie,
       isActive: true,
     },
