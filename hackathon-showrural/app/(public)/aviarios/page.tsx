@@ -1,31 +1,48 @@
-// "use client";
+"use client";
 
 import { columns } from "./columns";
 import { DataTable } from "./data-table";
 import Filter from "@/components/aviarios/Filter";
 import AddAviarioForm from "@/components/aviarios/AddAviarioForm";
-
-const aviarios: Aviario[] = [
-  {
-    id: "1",
-    nomeResponsavel: "João",
-    endereco: "Rua 1",
-    isAtivo: true,
-  },
-  {
-    id: "2",
-    nomeResponsavel: "Giovani",
-    endereco: "Rua 3",
-    isAtivo: false,
-  },
-];
+import { useEffect, useState } from "react";
+import { Aviario, Produtor } from "@/app/uteis/types";
+import crudSanity from "../../sanityClient";
 
 export default function Aviarios() {
+  const [aviarios, setAviarios] = useState<Aviario[]>([]);
+
+  useEffect(() => {
+    async function fetchAviarios() {
+      try {
+        const retorno: Aviario[] = await crudSanity.select("aviario", [], "", "id_aviario");
+        let retornoNomeProdutor: Produtor[] = await crudSanity.select("produtor", ["nome", "id_produtor"], "", "id_produtor");
+
+        retornoNomeProdutor = retornoNomeProdutor.filter((item) => item.id_produtor !== undefined);
+
+        if (Array.isArray(retorno)) {
+          const aviariosAtualizados = retorno.map((aviario) => ({
+            ...aviario,
+            ds_produtor: retornoNomeProdutor.find((produtor) => produtor.id_produtor === aviario.id_produtor)?.nome || "Desconhecido",
+          }));
+
+          setAviarios(aviariosAtualizados);
+          console.log("AVIÁRIOS CARREGADOS:", aviariosAtualizados);
+        } else {
+          console.error("Formato inesperado da resposta:", retorno);
+        }
+      } catch (error) {
+        console.error("Erro ao buscar aviários:", error);
+      }
+    }
+
+    fetchAviarios();
+  }, []);
+
   return (
     <div>
       <div className="w-full flex justify-center pt-16">
         <div className="w-4/5">
-          <Filter  />
+          <Filter />
           <DataTable columns={columns} data={aviarios} />
           <AddAviarioForm />
         </div>
