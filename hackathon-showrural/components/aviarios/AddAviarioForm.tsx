@@ -50,12 +50,12 @@ export default function AddAviarioForm() {
   }, []);
 
   const FormSchema: ZodType<Aviario> = z.object({
-    id_aviario: z.number(),
-    id_produtor: z.number(),
-    ds_produtor: z.string(),
-    nome_responsavel: z.string(),
-    endereco: z.string(),
-    is_ativo: z.boolean(),
+    id_aviario: z.any(),
+    id_produtor: z.any(),
+    ds_produtor: z.any(),
+    nome_responsavel: z.any(),
+    endereco: z.any(),
+    is_ativo: z.any(),
   });
 
   const form = useForm<z.infer<typeof FormSchema>>({
@@ -76,7 +76,7 @@ export default function AddAviarioForm() {
         is_ativo: data.is_ativo,
         id_produtor: data.id_produtor,
         nome_responsavel: data.nome_responsavel,
-        endereco: data.endereco
+        endereco: data.endereco,
       });
 
       console.log("Novo Aviário Adicionado:", data);
