@@ -3,8 +3,8 @@
 import { columns } from "./columns";
 import { DataTable } from "./data-table";
 import Filter from "@/components/lotes/Filter";
-import AddAviarioForm from "@/components/aviarios/AddAviarioForm";
 import ExpandableTable from "@/components/lotes/ExpandableTable";
+import AddLoteForm from "@/components/lotes/AddLoteForm";
 
 const aviarios: Aviario[] = [
   {
@@ -28,7 +28,7 @@ export default function Aviarios() {
         <div className="w-4/5">
           <Filter  />
           <ExpandableTable />
-          <AddAviarioForm />
+          <AddLoteForm />
         </div>
       </div>
     </div>

@@ -15,6 +15,7 @@ export interface Aviario {
 
 export interface Lote {
     id_lote?: number;
+    id_aviario?: number;
     dt_alojamento?: Date;
     dt_saida_lote?: Date;
     qt_aves?: number;
@@ -29,7 +30,7 @@ export interface Lote {
 export interface Ocorrencia {
     id_ocorrencia?: number;
     dt_ocorrencia?: Date;
-    image?: string; // Assuming image is a URL or base64 string
+    image?: string | undefined; // Assuming image is a URL or base64 string
 }
 
 export interface TemplateCheckList {
