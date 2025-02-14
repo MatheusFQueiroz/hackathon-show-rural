@@ -11,8 +11,8 @@ export default function Checklist() {
 
   return (
     <div>
-      <div className="w-full  pt-2 ">
-        <div className="w-4/5 flex items-center flex-col gap-12 justify-center">
+      <div className="pt-2 w-3/4 flex items-center flex-col gap-12 justify-center ">
+        <div className="">
           <button onClick={chamar} className="text-3xl">CheckList</button>
           <Table>
             <TableHeader>
