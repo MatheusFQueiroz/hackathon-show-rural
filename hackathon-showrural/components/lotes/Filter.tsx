@@ -60,8 +60,8 @@ export default function Filter() {
     defaultValues: {
       id_lote: undefined,
       id_aviario: undefined,
-      dt_alojamento: null,
-      qt_aves: null,
+      dt_alojamento: undefined,
+      qt_aves: undefined,
     },
   });
 
@@ -159,7 +159,7 @@ export default function Filter() {
             <FormItem>
               <FormLabel>Quantidade de Aves</FormLabel>
               <FormControl>
-                <Input  {...field ?? 0} />
+                <Input {...field} />
               </FormControl>
             </FormItem>
           )}
