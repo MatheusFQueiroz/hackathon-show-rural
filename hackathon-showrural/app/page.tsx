@@ -17,6 +17,10 @@ import {
   ChartTooltipContent,
 } from "@/components/ui/chart"
 
+import Filter from "@/components/lotes/Filter";
+import ExpandableTable from "@/components/lotes/ExpandableTable";
+import AddLoteForm from "@/components/lotes/AddLoteForm";
+
 const chartData = [
   { name: "Aviários com lote ativo: ", value: 500, fill: "hsl(var(--primary))" },
   { name: "Aviários sem lote ativo:", value: 200, fill: "" },
@@ -55,9 +59,9 @@ export default function Home() {
   }, [])
 
   return (
-    <div className="w-full flex justify-center pt-4">
-      <div className="flex flex-row gap-4 w-4/5">
-        <Card className="flex flex-col w-1/2">
+    <div className="w-full flex flex-col justify-center pt-4 ">
+      <div className="flex justify-center gap-10 w-full px-16">
+        <Card className="flex flex-col justify-center w-1/2">
           <CardHeader className="items-center pb-0">
             <CardTitle>Distribuição de Aviários</CardTitle>
             <CardDescription>Julho 2024 - Janeiro 2025</CardDescription>
@@ -142,6 +146,12 @@ export default function Home() {
             </ChartContainer>
           </CardContent>
         </Card>
+      </div>
+      <div className="w-full flex justify-center pt-2">
+        <div className="w-4/5 pb-8">
+          <CardTitle className="pt-6 pb-2 flex justify-center">Últimos lotes</CardTitle>      
+          <ExpandableTable />
+        </div>
       </div>
     </div>
   )
