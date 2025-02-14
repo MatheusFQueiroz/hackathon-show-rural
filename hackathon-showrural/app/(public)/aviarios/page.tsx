@@ -24,7 +24,7 @@ export default function Aviarios() {
           const aviariosAtualizados = retorno.map((aviario) => ({
             ...aviario,
             ds_produtor: retornoNomeProdutor.find((produtor) => produtor.id_produtor === aviario.id_produtor)?.nome || "Desconhecido",
-            is_ativo: aviario.is_ativo ? "Ativo" : "Inativo", // Formata Ativo/Inativo
+            //is_ativo: aviario.is_ativo ? "Ativo" : "Inativo", // Formata Ativo/Inativo
           }));
 
           setAviarios(aviariosAtualizados);
@@ -41,11 +41,11 @@ export default function Aviarios() {
   }, []);
 
   // Filtragem com base nos filtros do usuário
-  function handleFilter(filters: { situacao: string; produtor: string }) {
+  function handleFilter(filters: { situacao?: boolean; produtor: string }) {
     let resultado = aviarios;
 
     if (filters.situacao) {
-      resultado = resultado.filter((aviario) => aviario.is_ativo.toLowerCase() === filters.situacao);
+      resultado = resultado.filter((aviario) => aviario.is_ativo === filters.situacao);
     }
 
     if (filters.produtor.trim() !== "") {

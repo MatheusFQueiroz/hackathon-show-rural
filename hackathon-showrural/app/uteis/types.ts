@@ -5,9 +5,9 @@ export interface Produtor {
 }
 
 export interface Aviario {
-    id_aviario: number;
+    id_aviario: number | any;
     is_ativo: boolean;
-    id_produtor: number;
+    id_produtor: number | any;
     ds_produtor: string;
     nome_responsavel: string;
     endereco: string;

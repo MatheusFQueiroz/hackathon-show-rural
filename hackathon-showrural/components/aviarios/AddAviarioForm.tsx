@@ -38,7 +38,7 @@ export default function AddAviarioForm() {
 
         // Criar uma lista única de produtores a partir dos aviários
         const idsProdutoresUsados = new Set(aviarios.map((a) => a.id_produtor));
-        const produtoresUnicos = todosProdutores.filter((p) => idsProdutoresUsados.has(p.id_produtor));
+        const produtoresUnicos = todosProdutores.filter((p: { id_produtor: number; }) => idsProdutoresUsados.has(p.id_produtor));
 
         setProdutores(produtoresUnicos);
       } catch (error) {
@@ -49,11 +49,12 @@ export default function AddAviarioForm() {
     fetchProdutores();
   }, []);
 
-  const FormSchema: ZodType<Omit<Aviario, "id_aviario">> = z.object({
-    id_produtor: z.number().min(1, "Selecione um produtor"),
-    ds_produtor: z.string().optional(),
-    nome_responsavel: z.string().nonempty("Informe o nome do responsável"),
-    endereco: z.string().nonempty("Informe o endereço"),
+  const FormSchema: ZodType<Aviario> = z.object({
+    id_aviario: z.number(),
+    id_produtor: z.number(),
+    ds_produtor: z.string(),
+    nome_responsavel: z.string(),
+    endereco: z.string(),
     is_ativo: z.boolean(),
   });
 

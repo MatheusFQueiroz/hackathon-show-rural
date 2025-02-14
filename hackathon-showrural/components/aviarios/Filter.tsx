@@ -13,7 +13,7 @@ import {
 } from "../ui/select";
 
 interface FilterProps {
-  onFilter: (filters: { situacao: string; produtor: string }) => void;
+  onFilter: (filters: { situacao?: boolean; produtor: string }) => void;
 }
 
 export default function Filter({ onFilter }: FilterProps) {
@@ -31,7 +31,7 @@ export default function Filter({ onFilter }: FilterProps) {
 
   function onReset() {
     form.reset();
-    onFilter({ situacao: "ativo", produtor: "" });
+    onFilter({ produtor: "" });
   }
 
   return (

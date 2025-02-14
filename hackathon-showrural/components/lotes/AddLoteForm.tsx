@@ -36,11 +36,13 @@ const responsaveis: Responsavel[] = [
 ];
 
 export default function AddLoteForm() {
-  const FormSchema: ZodType<Aviario> = z.object({
+ /* const FormSchema: ZodType<Aviario> = z.object({
     id_aviario: z.any(),
     id_produtor: z.any(),
     nome_responsavel: z.string(),
     endereco: z.string(),
+    is_ativo: z.boolean(),
+    ds_produtor: z.string()
   });
 
   const form = useForm<z.infer<typeof FormSchema>>({
@@ -56,6 +58,7 @@ export default function AddLoteForm() {
   function onSubmit(data: z.infer<typeof FormSchema>) {
     console.log(data);
   }
+    */
   return (
     <div className="flex justify-end pt-5">
       <Dialog>

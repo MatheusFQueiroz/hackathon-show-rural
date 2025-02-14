@@ -5,7 +5,8 @@ import { DataTable } from "./data-table";
 import Filter from "@/components/lotes/Filter";
 import ExpandableTable from "@/components/lotes/ExpandableTable";
 import AddLoteForm from "@/components/lotes/AddLoteForm";
-
+import { Aviario } from "@/app/uteis/types";
+/*
 const aviarios: Aviario[] = [
   {
     id: "1",
@@ -19,7 +20,7 @@ const aviarios: Aviario[] = [
     endereco: "Rua 3",
     isAtivo: false,
   },
-];
+];*/
 
 export default function Aviarios() {
   return (
