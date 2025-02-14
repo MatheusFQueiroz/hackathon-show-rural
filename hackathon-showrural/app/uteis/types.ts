@@ -5,12 +5,13 @@ export interface Produtor {
 }
 
 export interface Aviario {
-    id_aviario: number | any;
-    is_ativo: boolean;
-    id_produtor: number | any;
-    ds_produtor: string;
-    nome_responsavel: string;
-    endereco: string;
+    id_aviario?: number | any;
+    is_ativo?: boolean;
+    is_ativoString?: boolean;
+    id_produtor?: number | any;
+    ds_produtor?: string;
+    nome_responsavel?: string;
+    endereco?: string;
 }
 
 export interface Lote {
