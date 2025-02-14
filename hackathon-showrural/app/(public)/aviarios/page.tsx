@@ -25,7 +25,7 @@ export default function Aviarios() {
     <div>
       <div className="w-full flex justify-center">
         <div className="w-4/5">
-          <Filter />
+          <Filter  />
           <DataTable columns={columns} data={aviarios} />
           <AddAviarioForm />
         </div>
