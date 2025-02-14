@@ -1,6 +1,6 @@
 "use client";
-import ExpandableTable from "@/components/checklist/ExpandableTableCheckList";
 import crudSanity from "../../sanityClient";
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 
 export default function Checklist() {
   
@@ -12,9 +12,20 @@ export default function Checklist() {
   return (
     <div>
       <div className="w-full  pt-2 ">
-        <div className="w-4/5 flex justify-centera items-center flex-col gap-12 justify-center">
+        <div className="w-4/5 flex items-center flex-col gap-12 justify-center">
           <button onClick={chamar} className="text-3xl">CheckList</button>
-          <ExpandableTable />
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableHead>Pergunta</TableHead>
+                <TableHead>Conforme</TableHead>
+                <TableHead>Não conforme</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+
+            </TableBody>
+          </Table>
         </div>
       </div>
     </div>
