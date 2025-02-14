@@ -1,7 +1,7 @@
 export interface Produtor {
-    id_produtor?: number;
-    nome?: string;
-    telefone?: string;
+    id_produtor?: any;
+    nome?: any;
+    telefone?: any;
 }
 
 export interface Aviario {
@@ -14,54 +14,54 @@ export interface Aviario {
 }
 
 export interface Lote {
-    id_lote?: number;
-    id_aviario?: number;
-    dt_alojamento?: Date;
-    dt_saida_lote?: Date;
-    qt_aves?: number;
-    qt_aves_mortas?: number;
-    linhagem?: string;
-    peso_ave_entrada?: number;
-    peso_ave_saida?: number;
-    isSalmonelaValid?: boolean;
-    nrOcorrencias?: Ocorrencia[];
+    id_lote?: any;
+    id_aviario?: any;
+    dt_alojamento?: any;
+    dt_saida_lote?: any;
+    qt_aves?: any;
+    qt_aves_mortas?: any;
+    linhagem?: any;
+    peso_ave_entrada?: any;
+    peso_ave_saida?: any;
+    isSalmonelaValid?: any;
+    nrOcorrencias?: any[];
 }
 
 export interface Ocorrencia {
-    id_ocorrencia?: number;
-    dt_ocorrencia?: Date;
-    image?: string | undefined; // Assuming image is a URL or base64 string
+    id_ocorrencia?: any;
+    dt_ocorrencia?: any;
+    image?: any | undefined; // Assuming image is a URL or base64 string
 }
 
 export interface TemplateCheckList {
-    id_templateCheckList?: number;
-    descricao_checkList?: string;
-    p1?: string;
-    p2?: string;
-    p3?: string;
-    p4?: string;
-    p5?: string;
-    p6?: string;
-    p7?: string;
-    p8?: string;
-    p9?: string;
-    p10?: string;
-    p11?: string;
+    id_templateCheckList?: any;
+    descricao_checkList?: any;
+    p1?: any;
+    p2?: any;
+    p3?: any;
+    p4?: any;
+    p5?: any;
+    p6?: any;
+    p7?: any;
+    p8?: any;
+    p9?: any;
+    p10?: any;
+    p11?: any;
 }
 
 export interface CheckList {
-    id_checkList?: number;
-    nr_lote?: number;
-    dt?: Date;
-    r1?: boolean;
-    r2?: boolean;
-    r3?: boolean;
-    r4?: boolean;
-    r5?: boolean;
-    r6?: boolean;
-    r7?: boolean;
-    r8?: boolean;
-    r9?: boolean;
-    r10?: boolean;
-    r11?: boolean;
+    id_checkList?: any;
+    nr_lote?: any;
+    dt?: any;
+    r1?: any;
+    r2?: any;
+    r3?: any;
+    r4?: any;
+    r5?: any;
+    r6?: any;
+    r7?: any;
+    r8?: any;
+    r9?: any;
+    r10?: any;
+    r11?: any;
 }

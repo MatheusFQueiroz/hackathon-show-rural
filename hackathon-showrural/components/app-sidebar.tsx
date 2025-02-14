@@ -46,7 +46,7 @@ const data = {
       items: [
         {
           title: "Checklist",
-          url: "#",
+          url: "checklist",
         },
         {
           title: "Ocorrências",

@@ -21,7 +21,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "../ui/dialog";
-import { Aviario } from "@/app/uteis/types";
+import { Aviario, Lote } from "@/app/uteis/types";
 import { Input } from "../ui/input";
 
 const responsaveis: Responsavel[] = [
@@ -35,30 +35,57 @@ const responsaveis: Responsavel[] = [
   },
 ];
 
+const aviarios: Aviario[] = [
+  {
+    id_aviario: 1,
+    id_produtor: 1,
+    ds_produtor: "João",
+    endereco: "Rua 1",
+    nome_responsavel: "Giovani Peão",
+    is_ativo: true,
+  },
+  {
+    id_aviario: 1,
+    id_produtor: 1,
+    ds_produtor: "João",
+    endereco: "Rua 1",
+    nome_responsavel: "Giovani Peão",
+    is_ativo: true,
+  },
+  {
+    id_aviario: 1,
+    id_produtor: 1,
+    ds_produtor: "João",
+    endereco: "Rua 1",
+    nome_responsavel: "Giovani Peão",
+    is_ativo: true,
+  },
+];
+
 export default function AddLoteForm() {
- /* const FormSchema: ZodType<Aviario> = z.object({
-    id_aviario: z.any(),
-    id_produtor: z.any(),
-    nome_responsavel: z.string(),
-    endereco: z.string(),
-    is_ativo: z.boolean(),
-    ds_produtor: z.string()
+  const FormSchema: ZodType<Lote> = z.object({
+    id_aviario: z.number(),
+    dt_alojamento: z.date(),
+    qt_aves: z.string(),
+    linhagem: z.string(),
+    peso_ave_entrada: z.number(),
   });
 
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
-      id_aviario: undefined,
-      id_produtor: undefined,
-      nome_responsavel: "",
-      endereco: "",
+      id_aviario: null,
+      dt_alojamento: new Date(),
+      qt_aves: undefined,
+      linhagem: "",
+      peso_ave_entrada: undefined,
     },
   });
 
   function onSubmit(data: z.infer<typeof FormSchema>) {
     console.log(data);
   }
-    */
+
   return (
     <div className="flex justify-end pt-5">
       <Dialog>
@@ -68,9 +95,7 @@ export default function AddLoteForm() {
         <DialogContent className="sm:max-w-[620px]">
           <DialogHeader>
             <DialogTitle>Adicionar Lote</DialogTitle>
-            <DialogDescription>
-              Insira as informações do Lote
-            </DialogDescription>
+            <DialogDescription>Insira as informações do Lote</DialogDescription>
           </DialogHeader>
           <Form {...form}>
             <form
@@ -79,10 +104,10 @@ export default function AddLoteForm() {
             >
               <FormField
                 control={form.control}
-                name="id_produtor"
+                name="id_aviario"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Produtor</FormLabel>
+                    <FormLabel>Aviário</FormLabel>
                     <Select onValueChange={field.onChange}>
                       <FormControl>
                         <SelectTrigger>
@@ -90,9 +115,12 @@ export default function AddLoteForm() {
                         </SelectTrigger>
                       </FormControl>
                       <SelectContent>
-                        {responsaveis.map((cliente: Responsavel) => (
-                          <SelectItem key={cliente.id} value={cliente.id}>
-                            {cliente.nome}
+                        {aviarios.map((aviario: Aviario) => (
+                          <SelectItem
+                            key={aviario.id_aviario}
+                            value={aviario.id_aviario}
+                          >
+                            {aviario.id_aviario}
                           </SelectItem>
                         ))}
                       </SelectContent>
@@ -102,22 +130,36 @@ export default function AddLoteForm() {
               />
               <FormField
                 control={form.control}
-                name="nome_responsavel"
+                name="dt_alojamento"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Nome Responsável</FormLabel>
+                    <FormLabel>Data Alojamento</FormLabel>
+                    <FormControl>
+                      <Input type="date" {...field} />
+                    </FormControl>
+                  </FormItem>
+                )}
+              />
+
+              <FormField
+                control={form.control}
+                name="qt_aves"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Qtd. Aves</FormLabel>
                     <FormControl>
                       <Input {...field} />
                     </FormControl>
                   </FormItem>
                 )}
               />
+
               <FormField
                 control={form.control}
-                name="endereco"
+                name="linhagem"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Endereço</FormLabel>
+                    <FormLabel>linhagem</FormLabel>
                     <FormControl>
                       <Input {...field} />
                     </FormControl>
