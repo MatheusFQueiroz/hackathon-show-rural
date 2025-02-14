@@ -70,7 +70,6 @@ export default function AddAviarioForm() {
   });
 
   async function onSubmit(data: z.infer<typeof FormSchema>) {
-    alert("Formulário enviado com sucesso!");
     try {
       await crudSanity.insert("aviario", {
         id_aviario: await crudSanity.getHightest("aviario", "id_aviario") + 1,
