@@ -3,9 +3,9 @@
 import * as React from "react";
 import {
   Bot,
-  Command,
   Warehouse,
   ChartPie,
+  Package,
 } from "lucide-react";
 
 import { NavMain } from "@/components/nav-main";
@@ -20,13 +20,11 @@ import {
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
 
-import Image from "next/image";
-
 const data = {
   user: {
-    name: "shadcn",
-    email: "m@example.com",
-    avatar: "/avatars/shadcn.jpg",
+    name: "Elcio",
+    email: "elcio@coopavel.com",
+    avatar: "",
   },
   navMain: [
     {
@@ -42,20 +40,16 @@ const data = {
       isActive: true,
     },
     {
-      title: "Models",
+      title: "Lotes",
       url: "#",
-      icon: Bot,
+      icon: Package,
       items: [
         {
-          title: "Genesis",
+          title: "Checklist",
           url: "#",
         },
         {
-          title: "Explorer",
-          url: "#",
-        },
-        {
-          title: "Quantum",
+          title: "Ocorrências",
           url: "#",
         },
       ],
