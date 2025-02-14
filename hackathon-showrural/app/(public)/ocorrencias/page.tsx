@@ -28,7 +28,6 @@ export default function Ocorrencias() {
             <h1 className="text-4xl">
                 Ocorrências
             </h1>
-          <ExpandableTable />
         </div>
       </div>
     </div>

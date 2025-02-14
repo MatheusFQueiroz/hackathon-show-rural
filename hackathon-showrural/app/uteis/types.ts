@@ -28,7 +28,7 @@ export interface Lote {
 }
 
 export interface Ocorrencia {
-    id_ocorrencia?: any;
+    cd_ocorrencia?: any;
     dt_ocorrencia?: any;
     image?: any | undefined; // Assuming image is a URL or base64 string
 }
