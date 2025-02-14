@@ -10,6 +10,7 @@ import crudSanity from "../../sanityClient";
 
 export default function Aviarios() {
   const [aviarios, setAviarios] = useState<Aviario[]>([]);
+  const [filteredAviarios, setFilteredAviarios] = useState<Aviario[]>([]);
 
   useEffect(() => {
     async function fetchAviarios() {
@@ -23,10 +24,11 @@ export default function Aviarios() {
           const aviariosAtualizados = retorno.map((aviario) => ({
             ...aviario,
             ds_produtor: retornoNomeProdutor.find((produtor) => produtor.id_produtor === aviario.id_produtor)?.nome || "Desconhecido",
+            is_ativo: aviario.is_ativo ? "Ativo" : "Inativo", // Formata Ativo/Inativo
           }));
 
           setAviarios(aviariosAtualizados);
-          console.log("AVIÁRIOS CARREGADOS:", aviariosAtualizados);
+          setFilteredAviarios(aviariosAtualizados);
         } else {
           console.error("Formato inesperado da resposta:", retorno);
         }
@@ -38,12 +40,29 @@ export default function Aviarios() {
     fetchAviarios();
   }, []);
 
+  // Filtragem com base nos filtros do usuário
+  function handleFilter(filters: { situacao: string; produtor: string }) {
+    let resultado = aviarios;
+
+    if (filters.situacao) {
+      resultado = resultado.filter((aviario) => aviario.is_ativo.toLowerCase() === filters.situacao);
+    }
+
+    if (filters.produtor.trim() !== "") {
+      resultado = resultado.filter((aviario) =>
+        aviario.ds_produtor.toLowerCase().includes(filters.produtor.toLowerCase())
+      );
+    }
+
+    setFilteredAviarios(resultado);
+  }
+
   return (
     <div>
       <div className="w-full flex justify-center pt-2">
         <div className="w-4/5">
-          <Filter />
-          <DataTable columns={columns} data={aviarios} />
+          <Filter onFilter={handleFilter} />
+          <DataTable columns={columns} data={filteredAviarios} />
           <AddAviarioForm />
         </div>
       </div>

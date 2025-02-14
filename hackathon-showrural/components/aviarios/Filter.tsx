@@ -3,6 +3,7 @@
 import { useForm } from "react-hook-form";
 import { Button } from "../ui/button";
 import { Form, FormControl, FormField, FormItem, FormLabel } from "../ui/form";
+import { Input } from "../ui/input";
 import {
   Select,
   SelectContent,
@@ -11,59 +12,44 @@ import {
   SelectValue,
 } from "../ui/select";
 
-const responsaveis: Responsavel[] = [
-  { id: "1", nome: "João" },
-  { id: "2", nome: "Giovani" },
-];
+interface FilterProps {
+  onFilter: (filters: { situacao: string; produtor: string }) => void;
+}
 
-export default function Filter() {
+export default function Filter({ onFilter }: FilterProps) {
   const form = useForm({
     defaultValues: {
-      responsavel: "",
       situacao: "ativo",
+      produtor: "",
     },
   });
 
   function onSubmit(data: any) {
     console.log("Filtros selecionados:", data);
+    onFilter(data);
+  }
+
+  function onReset() {
+    form.reset();
+    onFilter({ situacao: "ativo", produtor: "" });
   }
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="grid grid-cols-3 gap-8 items-end mb-8">
-        <FormField
-          control={form.control}
-          name="responsavel"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Nome do Responsável</FormLabel>
-              <Select onValueChange={field.onChange} defaultValue={field.value}>
-                <FormControl>
-                  <SelectTrigger>
-                    <SelectValue placeholder="Selecione um responsável" />
-                  </SelectTrigger>
-                </FormControl>
-                <SelectContent>
-                  {responsaveis.map((responsavel) => (
-                    <SelectItem key={responsavel.id} value={responsavel.id}>
-                      {responsavel.nome}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-            </FormItem>
-          )}
-        />
-
+      <form
+        onSubmit={form.handleSubmit(onSubmit)}
+        className="flex items-end gap-4 mb-4"
+      >
+        {/* Situação do Lote */}
         <FormField
           control={form.control}
           name="situacao"
           render={({ field }) => (
-            <FormItem>
-              <FormLabel>Situação Lote</FormLabel>
-              <Select onValueChange={field.onChange} defaultValue={field.value}>
+            <FormItem className="flex-1">
+              <FormLabel>Situação do Lote</FormLabel>
+              <Select onValueChange={field.onChange} value={field.value}>
                 <FormControl>
-                  <SelectTrigger>
+                  <SelectTrigger className="w-full">
                     <SelectValue placeholder="Selecione a situação" />
                   </SelectTrigger>
                 </FormControl>
@@ -76,7 +62,37 @@ export default function Filter() {
           )}
         />
 
-        <Button type="submit">Filtrar</Button>
+        {/* Produtor (Input de Texto) */}
+        <FormField
+          control={form.control}
+          name="produtor"
+          render={({ field }) => (
+            <FormItem className="flex-1">
+              <FormLabel>Produtor</FormLabel>
+              <FormControl>
+                <Input
+                  type="text"
+                  placeholder="Digite o nome do produtor"
+                  {...field}
+                />
+              </FormControl>
+            </FormItem>
+          )}
+        />
+
+        {/* Botão Filtrar */}
+        <Button type="submit" className="bg-orange-500 px-6 h-[42px] mt-6">
+          Filtrar
+        </Button>
+
+        {/* Botão para limpar filtros */}
+        <Button
+          type="button"
+          onClick={onReset}
+          className="bg-gray-400 px-6 h-[42px] mt-6"
+        >
+          Limpar Filtros
+        </Button>
       </form>
     </Form>
   );
