@@ -1,7 +1,7 @@
-"use client"
+"use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import { z } from "zod";
+import { z, ZodType } from "zod";
 import { useForm } from "react-hook-form";
 import { Form, FormControl, FormField, FormItem, FormLabel } from "../ui/form";
 import {
@@ -21,6 +21,8 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "../ui/dialog";
+import { Aviario } from "@/app/uteis/types";
+import { Input } from "../ui/input";
 
 const responsaveis: Responsavel[] = [
   {
@@ -34,16 +36,20 @@ const responsaveis: Responsavel[] = [
 ];
 
 export default function AddAviarioForm() {
-  const FormSchema = z.object({
-    cliente: z.string(),
-    situacao: z.string(),
+  const FormSchema: ZodType<Aviario> = z.object({
+    id_aviario: z.any(),
+    id_produtor: z.any(),
+    nome_responsavel: z.string(),
+    endereco: z.string(),
   });
 
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
-      cliente: "",
-      situacao: "",
+      id_aviario: undefined,
+      id_produtor: undefined,
+      nome_responsavel: "",
+      endereco: "",
     },
   });
 
@@ -56,7 +62,7 @@ export default function AddAviarioForm() {
         <DialogTrigger asChild>
           <Button variant="default">Adicionar Aviário</Button>
         </DialogTrigger>
-        <DialogContent className="sm:max-w-[700px]">
+        <DialogContent className="sm:max-w-[620px]">
           <DialogHeader>
             <DialogTitle>Adicionar Aviário</DialogTitle>
             <DialogDescription>
@@ -66,18 +72,15 @@ export default function AddAviarioForm() {
           <Form {...form}>
             <form
               onSubmit={form.handleSubmit(onSubmit)}
-              className="grid grid-cols-3 gap-8 items-end mb-8"
+              className="grid grid-cols-2 gap-8 items-end mb-8"
             >
               <FormField
                 control={form.control}
-                name="cliente"
+                name="id_produtor"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Nome do Cliente</FormLabel>
-                    <Select
-                      onValueChange={field.onChange}
-                      defaultValue={field.value}
-                    >
+                    <FormLabel>Produtor</FormLabel>
+                    <Select onValueChange={field.onChange}>
                       <FormControl>
                         <SelectTrigger>
                           <SelectValue />
@@ -96,28 +99,28 @@ export default function AddAviarioForm() {
               />
               <FormField
                 control={form.control}
-                name="situacao"
+                name="nome_responsavel"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Situação Lote</FormLabel>
-                    <Select
-                      onValueChange={field.onChange}
-                      defaultValue={undefined}
-                    >
-                      <FormControl>
-                        <SelectTrigger>
-                          <SelectValue placeholder="" />
-                        </SelectTrigger>
-                      </FormControl>
-                      <SelectContent>
-                        <SelectItem value="ativo">Ativo</SelectItem>
-                        <SelectItem value="inativo">Inativo</SelectItem>
-                      </SelectContent>
-                    </Select>
+                    <FormLabel>Nome Responsável</FormLabel>
+                    <FormControl>
+                      <Input {...field} />
+                    </FormControl>
                   </FormItem>
                 )}
               />
-              <Button type="submit">Filtrar</Button>
+              <FormField
+                control={form.control}
+                name="endereco"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Endereço</FormLabel>
+                    <FormControl>
+                      <Input {...field} />
+                    </FormControl>
+                  </FormItem>
+                )}
+              />
             </form>
           </Form>
           <DialogFooter>
