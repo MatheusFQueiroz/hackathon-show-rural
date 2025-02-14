@@ -21,6 +21,6 @@ export const columns: ColumnDef<Aviario>[] = [
   },
   {
     accessorKey: "is_ativo",
-    header: "Ativo",
+    header: "Aviário",
   }
 ]

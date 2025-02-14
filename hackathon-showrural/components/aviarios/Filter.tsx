@@ -40,27 +40,7 @@ export default function Filter({ onFilter }: FilterProps) {
         onSubmit={form.handleSubmit(onSubmit)}
         className="flex items-end gap-4 mb-4"
       >
-        {/* Situação do Lote */}
-        <FormField
-          control={form.control}
-          name="situacao"
-          render={({ field }) => (
-            <FormItem className="flex-1">
-              <FormLabel>Situação do Lote</FormLabel>
-              <Select onValueChange={field.onChange} value={field.value}>
-                <FormControl>
-                  <SelectTrigger className="w-full">
-                    <SelectValue placeholder="Selecione a situação" />
-                  </SelectTrigger>
-                </FormControl>
-                <SelectContent>
-                  <SelectItem value="ativo">Ativo</SelectItem>
-                  <SelectItem value="inativo">Inativo</SelectItem>
-                </SelectContent>
-              </Select>
-            </FormItem>
-          )}
-        />
+        
 
         {/* Produtor (Input de Texto) */}
         <FormField
@@ -76,6 +56,28 @@ export default function Filter({ onFilter }: FilterProps) {
                   {...field}
                 />
               </FormControl>
+            </FormItem>
+          )}
+        />
+
+        {/* Situação do Lote */}
+        <FormField
+          control={form.control}
+          name="situacao"
+          render={({ field }) => (
+            <FormItem className="flex-1">
+              <FormLabel>Situação do Aviário</FormLabel>
+              <Select onValueChange={field.onChange} value={field.value}>
+                <FormControl>
+                  <SelectTrigger className="w-full">
+                    <SelectValue placeholder="Selecione a situação" />
+                  </SelectTrigger>
+                </FormControl>
+                <SelectContent>
+                  <SelectItem value="ativo">Ativo</SelectItem>
+                  <SelectItem value="inativo">Inativo</SelectItem>
+                </SelectContent>
+              </Select>
             </FormItem>
           )}
         />
