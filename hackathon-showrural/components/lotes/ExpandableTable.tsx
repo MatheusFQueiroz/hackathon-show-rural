@@ -1,5 +1,6 @@
 "use client";
-import React, { useState, useEffect } from "react";
+
+import React, { useEffect, useState } from "react";
 import {
   Table,
   TableBody,
@@ -23,10 +24,10 @@ export default function ExpandableTable() {
     async function fetchLotes() {
       try {
         const retorno = await crudSanity.select("lote", [], "", "id_lote");
+
     
         retorno.map(async (lote: Lote) => {
-          const retornoOcorrencia = await crudSanity.select("ocorrencia", [], `id_aviario == ${lote.id_aviario}`);
-          console.log("QUERY OCORRENCIAS", retornoOcorrencia)
+          const retornoOcorrencia = await crudSanity.select("ocorrencia", [], "", `id_aviario == ${lote.id_aviario}`);
           setOcorrencias(retornoOcorrencia);
 
         })
